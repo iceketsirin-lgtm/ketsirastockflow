@@ -727,10 +727,54 @@ textarea:focus{
         height:66px;
     }
 }
+
+/* ===== KETSIRA FINAL WELCOME SCREEN ===== */
+#welcomeScreen{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 15% 20%,rgba(255,255,255,.95),transparent 28%),radial-gradient(circle at 85% 80%,rgba(216,180,254,.7),transparent 35%),linear-gradient(135deg,#ffd6e8,#f3ddff,#dff5ff);transition:opacity .8s ease,visibility .8s ease}
+#welcomeScreen.hide{opacity:0;visibility:hidden;pointer-events:none}
+.welcome-card{position:relative;width:min(92%,570px);padding:46px 30px;text-align:center;border-radius:36px;background:rgba(255,255,255,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.85);box-shadow:0 30px 80px rgba(125,75,120,.22);animation:welcomeIn 1s cubic-bezier(.2,.8,.2,1)}
+.welcome-logo{width:112px;height:112px;margin:auto;display:flex;align-items:center;justify-content:center;border-radius:32px;font-size:56px;background:linear-gradient(135deg,#ff9fc5,#c4a5ff);box-shadow:0 15px 35px rgba(170,100,180,.25);animation:logoFloat 2.4s ease-in-out infinite}
+.welcome-card h1{margin-top:24px;font-size:40px;font-weight:800;letter-spacing:2px;background:linear-gradient(90deg,#ec4899,#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.welcome-card h2{margin-top:2px;font-size:18px;color:#8b6680}
+.welcome-card .welcome-desc{margin-top:12px;line-height:1.7;color:#806f80;font-size:15px}
+.welcome-features{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:22px 0}.welcome-features span{padding:8px 13px;border-radius:30px;background:#fff;color:#76556d;font-size:13px;box-shadow:0 5px 15px rgba(120,80,120,.08)}
+.welcome-loading{width:230px;height:7px;margin:18px auto 8px;overflow:hidden;border-radius:20px;background:#eee3eb}.welcome-loading div{width:0;height:100%;border-radius:20px;background:linear-gradient(90deg,#ff82b3,#a855f7);animation:welcomeLoading 2.8s ease forwards}
+.welcome-card .loading-text{font-size:12px;color:#a58b9e}.enter-btn{margin-top:10px;border:0;padding:14px 38px;border-radius:50px;cursor:pointer;color:#fff;font-size:16px;font-weight:700;background:linear-gradient(135deg,#ec4899,#a855f7);box-shadow:0 10px 25px rgba(168,85,247,.25);transition:.25s}.enter-btn:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 16px 35px rgba(168,85,247,.35)}
+.floating-item{position:absolute;font-size:28px;opacity:.65;pointer-events:none;animation:floatingUp linear infinite}.item1{left:7%;bottom:-50px;animation-duration:8s}.item2{left:20%;bottom:-50px;animation-duration:11s}.item3{left:35%;bottom:-50px;animation-duration:7s}.item4{left:72%;bottom:-50px;animation-duration:9s}.item5{left:86%;bottom:-50px;animation-duration:12s}.item6{left:55%;bottom:-50px;animation-duration:10s}
+.sparkle{position:absolute;top:78px;right:110px;color:#f59e0b;font-size:28px;animation:sparkle 1.5s ease-in-out infinite}
+@keyframes welcomeIn{from{opacity:0;transform:translateY(50px) scale(.85)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes logoFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(3deg)}}@keyframes welcomeLoading{to{width:100%}}@keyframes sparkle{0%,100%{transform:scale(.8) rotate(0);opacity:.4}50%{transform:scale(1.3) rotate(180deg);opacity:1}}@keyframes floatingUp{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.7}100%{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+@media(max-width:600px){.welcome-card{padding:35px 20px}.welcome-logo{width:90px;height:90px;font-size:45px}.welcome-card h1{font-size:32px}.sparkle{right:55px;top:55px}}
+/* ===== FINAL PRODUCT EDIT ===== */
+.edit-actions{display:flex;gap:6px;flex-wrap:wrap}.btn.btn-sm{padding:7px 10px;font-size:12px}
+
+
+@media print{
+  body{background:#fff!important;color:#111!important}
+  .sidebar,.topbar,.toolbar,.btn,.nav,.welcome-card,#welcomeScreen{display:none!important}
+  .page{display:none!important}
+  #reports{display:block!important;position:static!important;width:100%!important;margin:0!important;padding:0!important}
+  #reports .card{box-shadow:none!important;border:1px solid #ddd!important;break-inside:avoid}
+  #printReportHeader{display:block!important}
+  .print-only{display:block!important}
+}
+#printReportHeader,.print-only{display:none}
+.report-meta{padding:12px 16px;border:1px dashed var(--border,#ddd);border-radius:12px;margin:14px 0;color:var(--muted)}
 </style>
 </head>
 
-<body>
+<body style="overflow:hidden">
+
+<div id="welcomeScreen">
+  <div class="floating-item item1">💗</div><div class="floating-item item2">✨</div><div class="floating-item item3">🌸</div><div class="floating-item item4">💖</div><div class="floating-item item5">⭐</div><div class="floating-item item6">🩷</div>
+  <div class="welcome-card">
+    <div class="welcome-logo">📦</div><div class="sparkle">✦</div>
+    <h1>KETSIRA</h1><h2>Smart Business Control Center</h2>
+    <p class="welcome-desc">ระบบจัดการธุรกิจและสต็อกสินค้าอัจฉริยะ<br>ครบทั้งออเดอร์ สต็อก การเงิน และรายงาน 💕</p>
+    <div class="welcome-features"><span>📦 Stock</span><span>🛒 Order</span><span>📊 Dashboard</span><span>📈 Report</span></div>
+    <div class="welcome-loading"><div></div></div><p class="loading-text">กำลังเตรียมระบบให้พร้อม...</p>
+    <button class="enter-btn" onclick="enterKetsira()">✨ เข้าสู่ระบบ</button>
+  </div>
+</div>
+
 
 <div class="app">
 
@@ -880,9 +924,9 @@ textarea:focus{
 
 </div>
 
-<button class="btn" onclick="refreshAll()">
-    🔄 อัปเดตข้อมูล
-</button>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+<button class="btn" onclick="refreshAll()">🔄 อัปเดตข้อมูล</button>
+</div>
 
 </div>
 
@@ -898,10 +942,10 @@ textarea:focus{
 </div>
 
 <div class="stat-card">
-<h3>กำไรสุทธิ</h3>
+<h3>กำไรจากการขาย</h3>
 <div class="stat-value" id="dashProfit">฿0</div>
 <div class="stat-change up">
-    คำนวณจากต้นทุนจริง
+    ยอดขาย − ต้นทุนสินค้าที่ขาย
 </div>
 </div>
 
@@ -1026,7 +1070,7 @@ textarea:focus{
 </div>
 
 <button class="btn"
-        onclick="openModal('orderModal')">
+        onclick="clearOrderForm();openModal('orderModal')">
     ➕ เพิ่มออเดอร์
 </button>
 
@@ -1316,6 +1360,7 @@ textarea:focus{
 <th>หลัง</th>
 <th>อ้างอิง</th>
 <th>หมายเหตุ</th>
+<th>จัดการ</th>
 </tr>
 
 </thead>
@@ -1375,7 +1420,7 @@ textarea:focus{
 </div>
 
 <div class="stat-card">
-<h3>กำไรสุทธิ</h3>
+<h3>กำไรจากการขาย</h3>
 <div class="stat-value up" id="financeProfit">฿0</div>
 </div>
 
@@ -1388,6 +1433,10 @@ textarea:focus{
 <h3>
     📋 รายการบัญชี
 </h3>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn btn-primary" onclick="openModal('financeModal')">➕ เพิ่มรายการ</button>
+    <button class="btn" onclick="clearFinanceForm()">↻ รีเซ็ตฟอร์ม</button>
+</div>
 </div>
 
 <div class="table-wrap">
@@ -1401,6 +1450,7 @@ textarea:focus{
 <th>รายการ</th>
 <th>ประเภท</th>
 <th>จำนวนเงิน</th>
+<th>จัดการ</th>
 </tr>
 
 </thead>
@@ -1675,20 +1725,33 @@ textarea:focus{
 
 <div class="toolbar">
 
+<button class="btn btn-primary"
+        onclick="generateReport()">
+    📊 สร้างรายงาน
+</button>
+
 <button class="btn"
         onclick="exportReport()">
     📥 Export รายงาน
 </button>
 
 <button class="btn btn-light"
-        onclick="window.print()">
-    🖨️ พิมพ์
+        onclick="printBusinessReport()">
+    🖨️ พิมพ์รายงาน
 </button>
 
 </div>
 
 </div>
 
+
+<div id="printReportHeader">
+    <h1 style="margin:0 0 6px">KETSIRA Smart Business</h1>
+    <h2 style="margin:0">📈 รายงานธุรกิจ</h2>
+    <div id="printReportDate" class="report-meta"></div>
+</div>
+
+<div id="reportStatus" class="report-meta print-only"></div>
 
 <div class="grid-3">
 
@@ -1930,9 +1993,10 @@ textarea:focus{
 
 <div class="modal-head">
 
-<h2>
+<h2 id="orderModalTitle">
     🛒 สร้างออเดอร์
 </h2>
+<input type="hidden" id="orderEditId">
 
 <button class="close"
         onclick="closeModal('orderModal')">
@@ -2021,8 +2085,8 @@ textarea:focus{
 
 <button class="btn"
         style="width:100%"
-        onclick="addOrder()">
-    🛒 ยืนยันออเดอร์ & ตัด Stock
+        onclick="saveOrder()">
+    🛒 บันทึกออเดอร์
 </button>
 
 </div>
@@ -2131,9 +2195,10 @@ textarea:focus{
 
 <div class="modal-head">
 
-<h2>
+<h2 id="financeModalTitle">
     💰 เพิ่มรายการการเงิน
 </h2>
+<input type="hidden" id="financeEditId">
 
 <button class="close"
         onclick="closeModal('financeModal')">
@@ -2191,13 +2256,32 @@ textarea:focus{
 
 <button class="btn btn-success"
         style="width:100%"
-        onclick="addFinance()">
+        onclick="saveFinance()">
     💾 บันทึกรายการ
 </button>
 
 </div>
 </div>
 
+
+
+<!-- EDIT PRODUCT MODAL -->
+<div class="modal" id="editProductModal">
+  <div class="modal-box">
+    <div class="modal-head"><h2>✏️ แก้ไขข้อมูลสินค้า</h2><button class="close" onclick="closeModal('editProductModal')">×</button></div>
+    <input type="hidden" id="editOriginalCode">
+    <div class="form-grid">
+      <div class="form-group"><label>รหัสสินค้า *</label><input id="editProductCode"></div>
+      <div class="form-group"><label>ชื่อสินค้า *</label><input id="editProductName"></div>
+      <div class="form-group"><label>หมวดหมู่</label><input id="editProductCategory"></div>
+      <div class="form-group"><label>ต้นทุน/หน่วย *</label><input type="number" min="0" id="editProductCost"></div>
+      <div class="form-group"><label>ราคาขาย *</label><input type="number" min="0" id="editProductPrice"></div>
+      <div class="form-group"><label>จุดสั่งซื้อขั้นต่ำ</label><input type="number" min="0" id="editProductReorder"></div>
+    </div>
+    <div class="insight blue-box">💡 จำนวน Stock ปัจจุบันจะไม่ถูกเปลี่ยนจากการแก้ไขข้อมูลสินค้า เพื่อป้องกันประวัติ Stock Movement ผิดพลาด</div>
+    <button class="btn" style="width:100%" onclick="saveProductEdit()">💾 บันทึกการแก้ไข</button>
+  </div>
+</div>
 
 <div id="toast"></div>
 
@@ -2301,6 +2385,10 @@ function loadState(){
 
         if(x && x.products){
 
+            x.finance = Array.isArray(x.finance) ? x.finance : [];
+            x.finance.forEach((f, i) => {
+                if(!f.id) f.id = "FIN-" + (Date.now() + i);
+            });
             return x;
 
         }
@@ -2318,6 +2406,7 @@ function loadState(){
         finance:[
 
             {
+                id:"FIN-0001",
                 date:"2026-09-01",
                 desc:"ค่าโฆษณา",
                 type:"expense",
@@ -2325,6 +2414,7 @@ function loadState(){
             },
 
             {
+                id:"FIN-0002",
                 date:"2026-09-01",
                 desc:"ค่าแพ็กสินค้า",
                 type:"expense",
@@ -3211,7 +3301,9 @@ function addOrder(){
 
         type:"income",
 
-        amount
+        amount,
+
+        orderId:id
 
     });
 
@@ -3326,6 +3418,54 @@ function cancelOrder(id){
 
 }
 
+
+
+function editProduct(code){
+    const p=product(code); if(!p) return;
+    document.getElementById('editOriginalCode').value=p.code;
+    document.getElementById('editProductCode').value=p.code;
+    document.getElementById('editProductName').value=p.name;
+    document.getElementById('editProductCategory').value=p.category||'';
+    document.getElementById('editProductCost').value=p.cost;
+    document.getElementById('editProductPrice').value=p.price;
+    document.getElementById('editProductReorder').value=p.reorder;
+    openModal('editProductModal');
+}
+function saveProductEdit(){
+    const oldCode=document.getElementById('editOriginalCode').value;
+    const code=document.getElementById('editProductCode').value.trim();
+    const name=document.getElementById('editProductName').value.trim();
+    const category=document.getElementById('editProductCategory').value.trim()||'อื่น ๆ';
+    const cost=+document.getElementById('editProductCost').value;
+    const price=+document.getElementById('editProductPrice').value;
+    const reorder=+document.getElementById('editProductReorder').value;
+    const p=product(oldCode);
+    if(!p || !code || !name || cost<0 || price<0 || reorder<0){showToast('กรุณากรอกข้อมูลให้ถูกต้อง');return;}
+    if(code!==oldCode && state.products.some(x=>x.code===code)){showToast('รหัสสินค้าใหม่มีอยู่แล้ว');return;}
+    const beforeCode=p.code;
+    p.code=code; p.name=name; p.category=category; p.cost=cost; p.price=price; p.reorder=reorder;
+    state.movements.unshift({date:now(),type:'adjust_in',code:p.code,qty:0,before:p.stock,after:p.stock,ref:'EDIT',note:'แก้ไขข้อมูลสินค้า '+beforeCode+' → '+p.code});
+    save(); closeModal('editProductModal'); renderAll(); showToast('แก้ไขข้อมูลสินค้าเรียบร้อยแล้ว ✏️');
+}
+function deleteProduct(code){
+    const p=product(code); if(!p) return;
+    if(state.orders.some(o=>o.productCode===code && o.status!=='cancelled')){showToast('ไม่สามารถลบสินค้าได้ เพราะมีออเดอร์ที่ยังไม่ยกเลิก');return;}
+    if(!confirm('ต้องการลบสินค้า '+p.name+' ('+p.code+') ใช่หรือไม่?')) return;
+    state.products=state.products.filter(x=>x.code!==code);
+    save(); renderAll(); showToast('ลบสินค้าเรียบร้อยแล้ว 🗑️');
+}
+
+function enterKetsira(){
+    const w=document.getElementById('welcomeScreen');
+    if(!w) return;
+    w.classList.add('hide');
+    document.body.style.overflow='';
+    setTimeout(()=>w.remove(),850);
+}
+
+setTimeout(()=>{
+    if(document.getElementById('welcomeScreen')) enterKetsira();
+},4200);
 
 function renderProducts(){
 
@@ -3443,15 +3583,11 @@ function renderProducts(){
                 </td>
 
                 <td>
-
-                    <button
-                        class="btn btn-success btn-sm"
-                        onclick="quickStockIn('${p.code}')">
-
-                        + Stock
-
-                    </button>
-
+                    <div class="edit-actions">
+                    <button class="btn btn-success btn-sm" onclick="quickStockIn('${p.code}')">+ Stock</button>
+                    <button class="btn btn-sm" onclick="editProduct('${p.code}')">✏️ แก้ไข</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteProduct('${p.code}')">🗑️ ลบ</button>
+                    </div>
                 </td>
 
             </tr>`
@@ -3538,6 +3674,63 @@ function quickStockIn(code){
 
 }
 
+
+function clearOrderForm(){
+    document.getElementById('orderEditId').value='';
+    document.getElementById('orderModalTitle').textContent='🛒 สร้างออเดอร์';
+    document.getElementById('orderCustomer').value='';
+    document.getElementById('orderQty').value=1;
+    document.getElementById('orderDiscount').value=0;
+    document.getElementById('orderAmount').value='';
+    if(typeof fillSelects==='function') fillSelects();
+    updateOrderAmount();
+}
+
+function editOrder(id){
+    const o=state.orders.find(x=>String(x.id)===String(id));
+    if(!o || o.status==='cancelled') return;
+    document.getElementById('orderEditId').value=o.id;
+    document.getElementById('orderModalTitle').textContent='✏️ แก้ไขออเดอร์';
+    document.getElementById('orderCustomer').value=o.customer||'';
+    document.getElementById('orderProduct').value=o.productCode;
+    document.getElementById('orderQty').value=o.qty;
+    document.getElementById('orderDiscount').value=o.discount||0;
+    updateOrderAmount();
+    openModal('orderModal');
+}
+
+function saveOrder(){
+    const editId=String(document.getElementById('orderEditId').value||'');
+    if(!editId){ addOrder(); return; }
+    const o=state.orders.find(x=>String(x.id)===editId);
+    if(!o || o.status==='cancelled') return;
+    const customer=document.getElementById('orderCustomer').value.trim();
+    const code=document.getElementById('orderProduct').value;
+    const qty=Number(document.getElementById('orderQty').value);
+    const discount=Number(document.getElementById('orderDiscount').value)||0;
+    const p=product(code);
+    if(!customer||!p||qty<1||discount<0){showToast('กรุณากรอกข้อมูลออเดอร์ให้ถูกต้อง');return;}
+    const oldP=product(o.productCode);
+    const oldQty=Number(o.qty)||0;
+    // คืนจำนวนเดิมเข้าสต็อกก่อน แล้วตรวจสอบยอดใหม่
+    if(oldP) oldP.stock += oldQty;
+    if(p.stock < qty){ if(oldP) oldP.stock -= oldQty; showToast('Stock ไม่เพียงพอสำหรับการแก้ไขออเดอร์'); return; }
+    const before=p.stock;
+    p.stock -= qty;
+    o.customer=customer; o.productCode=code; o.qty=qty; o.discount=discount;
+    o.amount=Math.max(0,p.price*qty-discount); o.updatedAt=now();
+    state.movements.unshift({id:'MOV-'+Date.now(),date:now(),type:'out',code,qty,before,after:p.stock,ref:o.id,note:'แก้ไขออเดอร์และตัด Stock ใหม่'});
+    save(); closeModal('orderModal'); clearOrderForm(); renderAll(); showToast('แก้ไขออเดอร์และ Stock เรียบร้อยแล้ว ✏️');
+}
+
+function deleteOrder(id){
+    const o=state.orders.find(x=>String(x.id)===String(id));
+    if(!o) return;
+    if(o.status!=='cancelled'){showToast('กรุณายกเลิกออเดอร์ก่อนจึงจะลบได้');return;}
+    if(!confirm('ต้องการลบออเดอร์ '+o.id+' ออกจากประวัติหรือไม่?')) return;
+    state.orders=state.orders.filter(x=>String(x.id)!==String(id));
+    save(); renderAll(); showToast('ลบออเดอร์แล้ว 🗑️');
+}
 
 function renderOrders(){
 
@@ -3667,24 +3860,10 @@ function renderOrders(){
 
                     <td>
 
-                        ${
-                            can
-
-                            ?
-
-                            `<button
-                                class="btn btn-danger btn-sm"
-                                onclick="cancelOrder('${o.id}')">
-
-                                ↩️ ยกเลิก/คืน Stock
-
-                            </button>`
-
-                            :
-
-                            "-"
-
-                        }
+                        <div style="display:flex;gap:6px;flex-wrap:wrap">
+                        ${can ? `<button class="btn btn-primary btn-sm" onclick="editOrder('${o.id}')">✏️ แก้ไข</button>` : ""}
+                        ${can ? `<button class="btn btn-warning btn-sm" onclick="cancelOrder('${o.id}')">↩️ ยกเลิก/คืน Stock</button>` : `<button class="btn btn-danger btn-sm" onclick="deleteOrder('${o.id}')">🗑️ ลบ</button>`}
+                        </div>
 
                     </td>
 
@@ -3699,7 +3878,7 @@ function renderOrders(){
         :
 
         `<tr>
-            <td colspan="8"
+            <td colspan="9"
                 class="empty">
 
                 ยังไม่มีออเดอร์
@@ -3762,8 +3941,27 @@ function renderOrders(){
 }
 
 
+function normalizeMovementIds(){
+    const used=new Set();
+    state.movements.forEach((m,i)=>{
+        let id=String(m.id||'').trim();
+        if(!id || used.has(id)) id='MOV-'+Date.now()+'-'+i;
+        m.id=id; used.add(id);
+    });
+}
+
+function deleteMovement(id){
+    normalizeMovementIds();
+    const item=state.movements.find(m=>String(m.id)===String(id));
+    if(!item) return;
+    if(!confirm('ลบประวัติ Stock Movement รายการนี้หรือไม่?\nหมายเหตุ: การลบประวัติจะไม่เปลี่ยนจำนวน Stock ปัจจุบัน')) return;
+    state.movements=state.movements.filter(m=>String(m.id)!==String(id));
+    save(); renderAll(); showToast('ลบประวัติ Stock Movement แล้ว 🗑️');
+}
+
 function renderMovements(){
 
+    normalizeMovementIds();
     const counts = {
 
         in:0,
@@ -3874,6 +4072,9 @@ function renderMovements(){
                 <td>
                     ${esc(m.note)}
                 </td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="deleteMovement('${m.id || ''}')">🗑️ ลบประวัติ</button>
+                </td>
 
             </tr>`
         )
@@ -3896,240 +4097,200 @@ function renderMovements(){
 
 
 function financials(){
+    // ยอดขายต้องคำนวณจาก Order ที่ยังไม่ถูกยกเลิกโดยตรง
+    // เพื่อให้กำไรสอดคล้องกับ Stock และไม่ค้างยอดจาก Order ที่ยกเลิกแล้ว
+    const activeOrders = state.orders.filter(o => o.status !== "cancelled");
 
-    const active =
-        state.orders
-        .filter(
-            o =>
-                o.status !==
-                "cancelled"
-        );
+    const sales = activeOrders.reduce((sum, o) => {
+        return sum + (Number(o.amount) || 0);
+    }, 0);
 
+    // ต้นทุนสินค้าที่ขาย = ต้นทุนต่อหน่วยของสินค้า × จำนวนที่ขาย
+    const cogs = activeOrders.reduce((sum, o) => {
+        const p = product(o.productCode);
+        return sum + ((Number(p?.cost) || 0) * (Number(o.qty) || 0));
+    }, 0);
 
-    const income =
-        state.finance
-        .filter(
-            x =>
-                x.type ===
-                "income"
-        )
-        .reduce(
-            (s,x) =>
-                s + x.amount,
-            0
-        );
+    // รายรับอื่น ๆ ที่ผู้ใช้บันทึกเองในหน้าการเงิน
+    const otherIncome = state.finance
+        .filter(x => x.type === "income" && !x.orderId)
+        .reduce((sum, x) => sum + (Number(x.amount) || 0), 0);
 
+    const expense = state.finance
+        .filter(x => x.type === "expense")
+        .reduce((sum, x) => sum + (Number(x.amount) || 0), 0);
 
-    const extra =
-        state.finance
-        .filter(
-            x =>
-                x.type ===
-                "expense"
-        )
-        .reduce(
-            (s,x) =>
-                s + x.amount,
-            0
-        );
+    // กำไรจากการขาย: ยอดขายจาก Order - COGS
+    const profit = Math.max(0, sales - cogs);
 
-
-    const cogs =
-        active
-        .reduce(
-            (s,o) =>
-                s +
-                (
-                    product(
-                        o.productCode
-                    )?.cost || 0
-                ) *
-                o.qty,
-            0
-        );
-
+    // กำไรสุทธิ: กำไรจากการขาย + รายรับอื่น - ค่าใช้จ่าย
+    const netProfit = profit + otherIncome - expense;
 
     return {
-
-        income,
-
-        expense:extra,
-
+        income: sales + otherIncome,
+        sales,
+        otherIncome,
+        expense,
         cogs,
-
-        profit:
-            income -
-            extra -
-            cogs
-
+        profit,
+        netProfit
     };
-
 }
 
+function normalizeFinanceIds(){
+    const used = new Set();
+    state.finance.forEach((x,i)=>{
+        let id = String(x.id || '').trim();
+        if(!id || used.has(id)){
+            id = 'FIN-' + Date.now() + '-' + i;
+        }
+        x.id = id;
+        used.add(id);
+        x.amount = Number(x.amount) || 0;
+    });
+}
 
 function renderFinance(){
 
-    const f =
-        financials();
+    normalizeFinanceIds();
+    const f = financials();
 
+    document.getElementById("financeIncome").textContent = money(f.income);
+    document.getElementById("financeCOGS").textContent = money(f.cogs);
+    document.getElementById("financeExpense").textContent = money(f.expense);
+    document.getElementById("financeProfit").textContent = money(f.profit);
 
-    document
-        .getElementById("financeIncome")
-        .textContent =
-        money(f.income);
+    const table = document.getElementById("financeTable");
 
-
-    document
-        .getElementById("financeCOGS")
-        .textContent =
-        money(f.cogs);
-
-
-    document
-        .getElementById("financeExpense")
-        .textContent =
-        money(f.expense);
-
-
-    document
-        .getElementById("financeProfit")
-        .textContent =
-        money(f.profit);
-
-
-    document
-        .getElementById("financeTable")
-        .innerHTML =
-
-        state.finance
-        .map(
-            x =>
-
-            `<tr>
-
-                <td>
-                    ${x.date}
-                </td>
-
-                <td>
-                    ${esc(x.desc)}
-                </td>
-
-                <td>
-
-                    ${
-                        x.type === "income"
-
-                        ?
-
-                        `<span
-                            class="badge badge-success">
-                            รายรับ
-                        </span>`
-
-                        :
-
-                        `<span
-                            class="badge badge-danger">
-                            รายจ่าย
-                        </span>`
-                    }
-
-                </td>
-
-                <td
-                    class="${
-                        x.type === "income"
-                        ? "up"
-                        : "down"
-                    }">
-
-                    ${
-                        x.type === "income"
-                        ? "+"
-                        : "-"
-                    }
-
-                    ${money(x.amount)}
-
-                </td>
-
-            </tr>`
-        )
-        .join("");
-
-}
-
-
-function addFinance(){
-
-    const type =
-        document
-        .getElementById("financeType")
-        .value;
-
-    const desc =
-        document
-        .getElementById("financeDesc")
-        .value
-        .trim();
-
-    const amount =
-        +document
-        .getElementById("financeAmount")
-        .value;
-
-
-    if(
-        !desc ||
-        amount <= 0
-    ){
-
-        showToast(
-            "กรุณากรอกข้อมูลให้ครบ"
-        );
-
+    if(!state.finance.length){
+        table.innerHTML = `<tr><td colspan="5" class="empty">ยังไม่มีรายการการเงิน</td></tr>`;
         return;
-
     }
 
+    table.innerHTML = state.finance.map((x, i) => {
+        if(!x.id) x.id = "FIN-" + (Date.now() + i);
 
-    state.finance.unshift({
-
-        date:dateOnly(),
-
-        desc,
-
-        type,
-
-        amount
-
-    });
-
+        return `<tr>
+            <td>${esc(x.date)}</td>
+            <td>${esc(x.desc)}</td>
+            <td>
+                ${x.type === "income"
+                    ? `<span class="badge badge-success">รายรับ</span>`
+                    : `<span class="badge badge-danger">รายจ่าย</span>`}
+            </td>
+            <td class="${x.type === "income" ? "up" : "down"}">
+                ${x.type === "income" ? "+" : "-"}${money(x.amount)}
+            </td>
+            <td>
+                <div style="display:flex;gap:6px;flex-wrap:wrap">
+                    <button class="btn btn-primary" onclick="editFinanceByIndex(${i})">✏️ แก้ไข</button>
+                    <button class="btn btn-danger" onclick="deleteFinanceByIndex(${i})">🗑️ ลบ</button>
+                </div>
+            </td>
+        </tr>`;
+    }).join("");
 
     save();
+}
 
-    closeModal(
-        "financeModal"
-    );
+function clearFinanceForm(){
+    document.getElementById("financeEditId").value = "";
+    document.getElementById("financeModalTitle").textContent = "💰 เพิ่มรายการการเงิน";
+    document.getElementById("financeType").value = "income";
+    document.getElementById("financeDesc").value = "";
+    document.getElementById("financeAmount").value = "";
+}
 
+function editFinance(id){
+    const key = String(id);
+    const item = state.finance.find(x => String(x.id) === key);
+    if(!item) return;
 
-    document
-        .getElementById("financeDesc")
-        .value = "";
+    document.getElementById("financeEditId").value = item.id;
+    document.getElementById("financeModalTitle").textContent = "✏️ แก้ไขรายการการเงิน";
+    document.getElementById("financeType").value = item.type;
+    document.getElementById("financeDesc").value = item.desc;
+    document.getElementById("financeAmount").value = item.amount;
 
+    openModal("financeModal");
+}
 
-    document
-        .getElementById("financeAmount")
-        .value = "";
+function editFinanceByIndex(index){
+    const item = state.finance[Number(index)];
+    if(!item) return;
+    editFinance(item.id);
+}
 
+function deleteFinanceByIndex(index){
+    index = Number(index);
+    if(!Number.isInteger(index) || index < 0 || index >= state.finance.length) return;
 
+    const item = state.finance[index];
+    if(!item) return;
+
+    const label = item.desc || "รายการการเงิน";
+    if(!confirm(`ต้องการลบรายการ "${label}" จำนวน ${money(item.amount)} ใช่หรือไม่?`)) return;
+
+    state.finance.splice(index, 1);
+    save();
     renderAll();
+    showToast("ลบรายการการเงินแล้ว 🗑️");
+}
 
-    showToast(
-        "บันทึกรายการการเงินแล้ว 💰"
-    );
+function deleteFinance(id){
+    const key = String(id);
+    const item = state.finance.find(x => String(x.id) === key);
+    if(!item) return;
 
+    if(!confirm(`ต้องการลบรายการ "${item.desc}" จำนวน ${money(item.amount)} ใช่หรือไม่?`)) return;
+
+    state.finance = state.finance.filter(x => String(x.id) !== key);
+    save();
+    renderAll();
+    showToast("ลบรายการการเงินแล้ว 🗑️");
+}
+
+function saveFinance(){
+    const editId = String(document.getElementById("financeEditId").value || "");
+    const type = document.getElementById("financeType").value;
+    const desc = document.getElementById("financeDesc").value.trim();
+    const amount = Number(document.getElementById("financeAmount").value);
+
+    if(!desc || amount <= 0){
+        showToast("กรุณากรอกประเภท รายละเอียด และจำนวนเงินให้ถูกต้อง");
+        return;
+    }
+
+    if(editId){
+        const item = state.finance.find(x => String(x.id) === editId);
+        if(!item) return;
+
+        item.type = type;
+        item.desc = desc;
+        item.amount = amount;
+        item.updatedAt = now();
+
+        showToast("แก้ไขรายการการเงินแล้ว ✏️");
+    }else{
+        state.finance.unshift({
+            id: "FIN-" + Date.now(),
+            date: dateOnly(),
+            desc,
+            type,
+            amount
+        });
+
+        showToast("บันทึกรายการการเงินแล้ว 💰");
+    }
+
+    save();
+    closeModal("financeModal");
+    clearFinanceForm();
+    renderAll();
+}
+
+function addFinance(){
+    saveFinance();
 }
 
 
@@ -4384,7 +4545,7 @@ function insightsHTML(){
         </div>
 
         <p>
-            กำไรสุทธิจากข้อมูลปัจจุบันคือ
+            กำไรจากการขายจากข้อมูลปัจจุบันคือ
             ${money(f.profit)}
             ควรติดตามต้นทุนสินค้า
             และค่าใช้จ่ายอย่างต่อเนื่อง
@@ -4462,7 +4623,7 @@ function renderDashboard(){
 
 
     const sales =
-        f.income;
+        f.sales;
 
 
     const low =
@@ -4830,6 +4991,21 @@ function refreshSimulation(){
 }
 
 
+function generateReport(){
+    renderReports();
+    const f = financials();
+    const low = state.products.filter(p => p.stock <= p.reorder).length;
+    const date = new Date().toLocaleString("th-TH", {dateStyle:"medium", timeStyle:"short"});
+    document.getElementById("printReportDate").textContent = "จัดทำเมื่อ: " + date;
+    document.getElementById("reportStatus").innerHTML = `รายงานพร้อมพิมพ์ | ยอดขาย ${money(f.income)} | ต้นทุนขาย ${money(f.cogs)} | กำไรจากการขาย ${money(f.profit)} | สินค้าใกล้หมด ${low} รายการ`;
+    showToast("สร้างรายงานเรียบร้อยแล้ว 📊");
+}
+
+function printBusinessReport(){
+    generateReport();
+    setTimeout(() => window.print(), 150);
+}
+
 function renderReports(){
 
     const f =
@@ -4885,7 +5061,7 @@ function renderReports(){
                 |
                 ค่าใช้จ่าย ${money(f.expense)}
                 |
-                กำไรสุทธิ ${money(f.profit)}
+                กำไรจากการขาย ${money(f.profit)}
 
             </p>
 
@@ -5000,7 +5176,7 @@ function exportReport(){
 
         ["ค่าใช้จ่าย",f.expense],
 
-        ["กำไรสุทธิ",f.profit],
+        ["กำไรจากการขาย",f.profit],
 
         ["จำนวนสินค้า",
             state.products.length
